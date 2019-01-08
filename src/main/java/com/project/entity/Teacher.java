@@ -18,10 +18,19 @@ public class Teacher {
     private String email;//邮箱
     private String phone;//电话
     private String info;//个人简介
+    private String img;//头像地址
     private int labId;//所在实验室编号
 
     public Long getId() {
         return id;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public void setId(Long id) {

@@ -34,10 +34,10 @@ public class StudentController {
 
     /*
        修改个人资料
-
+     */
     @RequestMapping("/update")
     public String update(@RequestParam("file")MultipartFile file,HttpServletRequest request ){
-        int state=studentService.(file,request);
+        int state=studentService.updateStudent(file,request) ;
         if(state==-1){
             return "redict:user/update";
         }
@@ -46,20 +46,13 @@ public class StudentController {
         }
         else return"ss";
     }
-
+    /*
     修改密码
-
-    @RequestMapping("/changePassword")
-    public String changePassword(HttpServletRequest request ){
-        int state=userService.changePassword(request);
-        System.out.println(state);
-        if(state==-1){
-            return "user/changePassword";
-        }
-        else if(state==0){
-            return "user/changePassword";
-        }
-        else return"ss";
-    }
     */
+    @RequestMapping("/changePassword")
+    public int changePassword(HttpServletRequest request ){
+        int state=studentService.changePassword(request);
+        System.out.println(state);
+        return state;
+    }
 }
