@@ -1,7 +1,9 @@
 package com.project.service.impl;
 
 
+import com.project.entity.Apply;
 import com.project.entity.Student;
+import com.project.mapper.ApplyMapper;
 import com.project.mapper.StudentMapper;
 import com.project.service.IStudentService;
 import com.project.util.FileUtil;
@@ -18,6 +20,8 @@ public class StudentService implements IStudentService {
 
     @Autowired
     private StudentMapper studentMapper;
+    @Autowired
+    private ApplyMapper applyMapper;
 
     /*
        登录
@@ -29,7 +33,7 @@ public class StudentService implements IStudentService {
              return null;
          }
          else{
-             if(student .getPassword().equals(password))return student;
+             if(student .getPassword().equals(password)) return student;
              else return null;
          }
     }
@@ -54,7 +58,7 @@ public class StudentService implements IStudentService {
             student.setImg(pic) ;
         }else System.out.println("上传失败");
         System.out.println(student);
-        studentMapper.updateUser(student);
+        studentMapper.updateStudent(student);
         return 1;
     }
 
@@ -76,9 +80,31 @@ public class StudentService implements IStudentService {
         }
         else{
             student.setPassword(password1);
-            studentMapper.updateUser(student);
+            studentMapper.updateStudent(student);
              return 1;
         }
+    }
+
+    /*
+     提交申请
+     */
+    @Override
+    public int submitApl(HttpServletRequest request) {
+        Apply apply=new Apply();
+        Student student= (Student) request.getSession().getAttribute("student");
+        if(!"".equals(request.getParameter("lab_id"))&&request.getParameter("lab_id")!=null){
+            apply.setLab_id(Integer.parseInt(request.getParameter("lab_id")));
+        }
+        else return 0;
+        apply.setStudent_id(student.getId());
+        apply.setName(student.getName());
+        apply.setSClass(student.getSclass());
+        apply.setEmail(student.getEmail());
+        apply.setPhone(student.getPhone());
+        apply.setPrize(request.getParameter("prize"));
+        apply.setIntroduce(request.getParameter("introduce"));
+        applyMapper.addApply(apply);
+        return 1;
     }
 
 

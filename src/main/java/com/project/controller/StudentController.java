@@ -28,7 +28,7 @@ public class StudentController {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
        Student student = studentService.studentLogin(username,password);
-
+        if(student!=null) request.getSession().setAttribute("student",student);
         return student;
     }
 
@@ -36,15 +36,9 @@ public class StudentController {
        修改个人资料
      */
     @RequestMapping("/update")
-    public String update(@RequestParam("file")MultipartFile file,HttpServletRequest request ){
+    public int update(@RequestParam("file")MultipartFile file,HttpServletRequest request ){
         int state=studentService.updateStudent(file,request) ;
-        if(state==-1){
-            return "redict:user/update";
-        }
-        else if(state==0){
-            return "user/update";
-        }
-        else return"ss";
+         return state;
     }
     /*
     修改密码
@@ -54,5 +48,13 @@ public class StudentController {
         int state=studentService.changePassword(request);
         System.out.println(state);
         return state;
+    }
+
+    /*
+    填写申请表
+     */
+    @RequestMapping("/apply")
+    public int apply(HttpServletRequest request){
+        return studentService.submitApl(request);
     }
 }

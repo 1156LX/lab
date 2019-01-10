@@ -8,13 +8,13 @@ public class Student {
 
     @Id
     @GeneratedValue(strategy =GenerationType.AUTO)
-    private Long id;
+    private long id;
     private String username;//学号
     private String password;//密码
     private String name;//名字
     private String sex;//性别
     private int age;//年龄
-    private String clloge;//学院
+    private String college;//学院
     private String Sclass;//班级
     private String email;//邮箱
     private String phone;//电话
@@ -78,12 +78,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getClloge() {
-        return clloge;
+    public String getCollege() {
+        return college;
     }
 
-    public void setClloge(String clloge) {
-        this.clloge = clloge;
+    public void setCollege(String college) {
+        this.college = college;
     }
 
     public String getSclass() {
@@ -135,7 +135,7 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
-                ", clloge='" + clloge + '\'' +
+                ", college='" + college + '\'' +
                 ", Sclass='" + Sclass + '\'' +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +

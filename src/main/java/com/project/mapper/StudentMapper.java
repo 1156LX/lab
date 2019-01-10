@@ -8,5 +8,6 @@ public interface StudentMapper {
 
     public Student findByUsername(String username);
 
-    public void updateUser(Student student );
+    public void updateStudent(Student student);
+
 }

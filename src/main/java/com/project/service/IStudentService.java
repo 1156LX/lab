@@ -15,4 +15,7 @@ public interface IStudentService {
     //修改密码
     public int changePassword(HttpServletRequest request);
 
+    //提交申请
+    public int submitApl(HttpServletRequest request);
+
 }

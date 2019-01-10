@@ -9,4 +9,10 @@
         select * from student where username=#{username};
     </select>
 
+    <update id="updateStudent" parameterType="Student">
+        update student set
+        sclass=#{sclass},age=#{age},college=#{college},email=#{email},info=#{info},
+        name=#{name},password=#{password},phone=#{phone},sex=#{sex},username=#{username},img=#{img}
+    </update>
+
 </mapper>

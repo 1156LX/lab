@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
     private String username;//工号
     private String password;//密码
     private String name;//名字
@@ -21,7 +21,7 @@ public class Teacher {
     private String img;//头像地址
     private int labId;//所在实验室编号
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.project.mapper.ApplyMapper">
+   <insert id="addApply" parameterType="Apply">
+       insert into apply(lab_id,student_id,name,SClass,email,phone,introduce,prize) values
+       (#{apply.getLab_id()},#{apply.getStudent_id()},#{apply.getName()},#{apply.getSClass()},#{apply.getEmail()},#{apply.getPhone()},#{apply.getIntroduce()},#{apply.getPrize})
+   </insert>
+    
+</mapper>
